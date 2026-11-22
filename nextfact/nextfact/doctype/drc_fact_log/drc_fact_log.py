@@ -4,5 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-class DrcFactLog(Document):
+class DRCFactLog(Document):
 	pass
+
+DrcFactLog = DRCFactLog

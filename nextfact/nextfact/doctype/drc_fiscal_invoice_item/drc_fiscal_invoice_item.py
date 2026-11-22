@@ -4,5 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-class DrcFiscalInvoiceItem(Document):
+class DRCFiscalInvoiceItem(Document):
 	pass
+
+DrcFiscalInvoiceItem = DRCFiscalInvoiceItem

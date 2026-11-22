@@ -4,5 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-class DrcFactSettings(Document):
+class DRCFactSettings(Document):
 	pass
+
+DrcFactSettings = DRCFactSettings

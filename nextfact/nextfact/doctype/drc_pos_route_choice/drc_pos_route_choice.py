@@ -4,5 +4,8 @@
 import frappe
 from frappe.model.document import Document
 
-class DrcPosRouteChoice(Document):
+class DRCPosRouteChoice(Document):
 	pass
+
+DrcPosRouteChoice = DRCPosRouteChoice
+DRCPOSRouteChoice = DRCPosRouteChoice

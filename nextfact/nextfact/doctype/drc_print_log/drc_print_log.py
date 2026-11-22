@@ -4,5 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-class DrcPrintLog(Document):
+class DRCPrintLog(Document):
 	pass
+
+DrcPrintLog = DRCPrintLog

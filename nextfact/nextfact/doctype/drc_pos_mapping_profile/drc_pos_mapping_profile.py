@@ -4,5 +4,8 @@
 import frappe
 from frappe.model.document import Document
 
-class DrcPosMappingProfile(Document):
+class DRCPosMappingProfile(Document):
 	pass
+
+DrcPosMappingProfile = DRCPosMappingProfile
+DRCPOSMappingProfile = DRCPosMappingProfile

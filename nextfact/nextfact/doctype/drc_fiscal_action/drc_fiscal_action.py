@@ -4,5 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-class DrcFiscalAction(Document):
+class DRCFiscalAction(Document):
 	pass
+
+DrcFiscalAction = DRCFiscalAction

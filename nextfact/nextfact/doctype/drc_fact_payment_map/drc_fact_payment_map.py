@@ -4,5 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-class DrcFactPaymentMap(Document):
+class DRCFactPaymentMap(Document):
 	pass
+
+DrcFactPaymentMap = DRCFactPaymentMap
