@@ -92,11 +92,12 @@ def build_payload(sales_invoice_name, drc_fiscal_invoice, mapping=None):
             unit_price = flt(unit_price * fx_rate, 2)
 
         # Tax group resolution chain (V4-4)
+        row_tax_group = item.get("custom_drc_tax_group")
         item_tax_group = frappe.db.get_value("Item", item.item_code, "custom_drc_tax_group")
         group_tax_group = None
         if not item_tax_group and item.item_group:
             group_tax_group = frappe.db.get_value("Item Group", item.item_group, "custom_drc_tax_group")
-        line_tax_group = item_tax_group or group_tax_group or drc_fiscal_invoice.tax_group or settings.default_tax_group or "K"
+        line_tax_group = row_tax_group or item_tax_group or group_tax_group or drc_fiscal_invoice.tax_group or settings.default_tax_group or "K"
 
         # Item type resolution
         item_type = frappe.db.get_value("Item", item.item_code, "custom_drc_item_type") or "BIE"
