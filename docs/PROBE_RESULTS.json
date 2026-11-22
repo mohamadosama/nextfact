@@ -1,0 +1,69 @@
+{
+  "timestamp": "2026-11-23T01:12:45Z",
+  "base_url": "https://app.drcfactplus.com",
+  "environment": "test",
+  "api_key_prefix": "dfp_10Hbds8j",
+  "endpoints": {
+    "health": {
+      "status_code": 200,
+      "response": {
+        "ok": true,
+        "version": "v1",
+        "name": "DRC FACT+ ERP connector"
+      }
+    },
+    "rate": {
+      "status_code": 200,
+      "response": {
+        "rate": 2260.0,
+        "date": "2026-11-23T00:00:00+01:00",
+        "currency": "USD",
+        "source": "DGI e-MCF / BCC"
+      }
+    },
+    "reference": {
+      "status_code": 200,
+      "tax_groups_count": 16,
+      "available_groups": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"],
+      "group_K": {
+        "code": "K",
+        "description": "Non-assujetti",
+        "rate": 0
+      },
+      "group_B": {
+        "code": "B",
+        "description": "TVA normale 16 %",
+        "rate": 16
+      }
+    },
+    "post_invoices_draft": {
+      "status_code": 200,
+      "sample_invoice_id": 1022,
+      "sample_number": "FV/2026/00035",
+      "status": "brouillon"
+    },
+    "post_normalize_group_b": {
+      "status_code": 200,
+      "environment": "test",
+      "status": "normalisee_test",
+      "dgi": {
+        "dateTime": "23/11/2026 00:12:36",
+        "qrCode": "RDCF01;CD01005383-1;TESTFACTURESAE5J5LN6A2ET;A2431582F;20261123001236",
+        "codeDEFDGI": "TEST-FACT-URES-AE5J-5LN6-A2ET",
+        "counters": "138/209 FV",
+        "nim": "CD01005383-1"
+      }
+    },
+    "get_invoice": {
+      "status_code": 200,
+      "status": "normalisee_test",
+      "code_def_dgi": "TEST-FACT-URES-AE5J-5LN6-A2ET",
+      "dgi_uid": "24997268-29cf-45d2-a1d6-e3ba8b9d7f51"
+    },
+    "get_pdf": {
+      "status_code": 200,
+      "content_length_bytes": 56087,
+      "content_type": "application/pdf"
+    }
+  }
+}

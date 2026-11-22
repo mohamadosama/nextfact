@@ -1,0 +1,101 @@
+{% set L = nextfact_labels(settings.receipt_language) %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Delivery Note - {{ si.name }}</title>
+<style>
+@page {
+    size: 80mm auto;
+    margin: 0;
+}
+html, body {
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #fff;
+    color: #000;
+}
+.print-format {
+    font-family: "DejaVu Sans", Arial, sans-serif;
+    font-size: 56%;
+    line-height: 1.25;
+}
+.receipt-wrap {
+    width: 62.4mm;
+    max-width: 62.4mm;
+    margin: 0 auto;
+    padding: 2mm 0;
+}
+.c { text-align: center; }
+.r { text-align: right; }
+.l { text-align: left; }
+.b { font-weight: bold; }
+.big { font-size: 130%; }
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 1px 0;
+}
+.sep {
+    border-top: 1px dashed #000;
+    margin: 4px 0;
+}
+.sig-box {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #000;
+}
+</style>
+</head>
+<body onload="window.print()">
+<div class="print-format">
+<div class="receipt-wrap">
+    <div class="c b big">{{ company_name }}</div>
+    <div class="c b big">{{ L.delivery_note }}</div>
+    <div class="c">{{ L.date }} : {{ date_iso }}</div>
+    <div class="c">Ref : {{ si.name }}</div>
+    <div class="c">{{ L.operator }} : {{ operator }}</div>
+    <div class="c">Customer : {{ si.customer_name or si.customer }}</div>
+
+    <div class="sep"></div>
+
+    {% for it in items %}
+    <div class="row b">
+        <span>{{ it.item_name }}</span>
+        {% if show_prices %}<span>{{ fmt_money(it.amount, si.currency) }}</span>{% endif %}
+    </div>
+    <div class="l">
+        {{ it.qty|int if it.qty == it.qty|int else it.qty }} {{ it.uom or "Unit" }}
+        {% if show_prices %} x {{ fmt_money(it.rate, si.currency) }}{% endif %}
+    </div>
+    {% endfor %}
+
+    <div class="sep"></div>
+
+    <div class="row b">
+        <span>Total Items:</span>
+        <span>{{ items|length }}</span>
+    </div>
+    {% if show_prices %}
+    <div class="row b big">
+        <span>Total:</span>
+        <span>{{ fmt_money(si.grand_total, si.currency) }}</span>
+    </div>
+    {% endif %}
+
+    <div class="sep"></div>
+
+    <div class="row" style="margin-top: 16px;">
+        <div class="l">
+            <div class="b">{{ L.signature_deliverer }}</div>
+            <div style="height: 25px;"></div>
+        </div>
+        <div class="r">
+            <div class="b">{{ L.signature_client }}</div>
+            <div style="height: 25px;"></div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

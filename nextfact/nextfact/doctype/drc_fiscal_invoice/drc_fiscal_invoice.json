@@ -1,0 +1,434 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "invoice_type",
+  "status",
+  "col_id",
+  "source_sales_invoice",
+  "source_pos_profile",
+  "pos_mapping",
+  "emcf_nid",
+  "receipt_point_name",
+  "sec_client",
+  "source_customer",
+  "source_customer_name",
+  "client_type",
+  "col_client",
+  "client_id",
+  "client_nif",
+  "client_name_drc",
+  "exemption_certificate",
+  "sec_amounts",
+  "display_currency",
+  "price_mode",
+  "tax_group",
+  "fx_rate",
+  "fx_date",
+  "fx_source",
+  "col_amounts",
+  "amount_cdf",
+  "ht_cdf",
+  "vat_cdf",
+  "total_ttc_display",
+  "payment_code",
+  "sec_items",
+  "items",
+  "sec_gateway",
+  "drcfact_invoice_id",
+  "drcfact_number",
+  "external_ref",
+  "idempotent_replay",
+  "col_gateway",
+  "copy_count",
+  "last_printed_at",
+  "sec_dgi",
+  "dgi_code_def",
+  "dgi_nim",
+  "dgi_counters",
+  "dgi_datetime",
+  "dgi_environment",
+  "col_dgi",
+  "dgi_uid",
+  "dgi_qr_code",
+  "dgi_qr_image",
+  "sec_fa",
+  "reference_type",
+  "reference_code_def",
+  "source_drc_invoice_id",
+  "credit_note_reason",
+  "sec_error",
+  "error_message",
+  "error_detail"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": ".YY./.#####.",
+   "default": ".YY./.#####."
+  },
+  {
+   "fieldname": "invoice_type",
+   "fieldtype": "Select",
+   "label": "Invoice Type",
+   "options": "FV\nFA\nEV\nEA\nFT\nET",
+   "default": "FV",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Fiscal Status",
+   "options": "Draft\nGateway Draft Created\nPending Verification\nNormalized\nNormalized (Test)\nFailed\nCancelled by RAN",
+   "default": "Draft",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col_id",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "source_pos_profile",
+   "fieldtype": "Link",
+   "label": "POS Profile",
+   "options": "POS Profile"
+  },
+  {
+   "fieldname": "pos_mapping",
+   "fieldtype": "Link",
+   "label": "DRC POS Mapping",
+   "options": "DRC POS Mapping",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "emcf_nid",
+   "fieldtype": "Data",
+   "label": "e-MCF NID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "receipt_point_name",
+   "fieldtype": "Data",
+   "label": "Point of Sale Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_client",
+   "fieldtype": "Section Break",
+   "label": "Client Information"
+  },
+  {
+   "fieldname": "source_customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "source_customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "client_type",
+   "fieldtype": "Select",
+   "label": "Client Type",
+   "options": "PP\nPM\nPC\nPL\nAO",
+   "default": "PP",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_client",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Int",
+   "label": "DRC Client ID"
+  },
+  {
+   "fieldname": "client_nif",
+   "fieldtype": "Data",
+   "label": "Client NIF"
+  },
+  {
+   "fieldname": "client_name_drc",
+   "fieldtype": "Data",
+   "label": "Client Name (DRC)"
+  },
+  {
+   "fieldname": "exemption_certificate",
+   "fieldtype": "Small Text",
+   "label": "Exemption Certificate (AO)"
+  },
+  {
+   "fieldname": "sec_amounts",
+   "fieldtype": "Section Break",
+   "label": "Amounts & FX"
+  },
+  {
+   "fieldname": "display_currency",
+   "fieldtype": "Link",
+   "label": "Display Currency",
+   "options": "Currency",
+   "default": "CDF",
+   "reqd": 1
+  },
+  {
+   "fieldname": "price_mode",
+   "fieldtype": "Select",
+   "label": "Price Mode",
+   "options": "ttc\nht",
+   "default": "ttc",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_group",
+   "fieldtype": "Data",
+   "label": "Tax Group",
+   "default": "K",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fx_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate"
+  },
+  {
+   "fieldname": "fx_date",
+   "fieldtype": "Date",
+   "label": "FX Date"
+  },
+  {
+   "fieldname": "fx_source",
+   "fieldtype": "Data",
+   "label": "FX Source"
+  },
+  {
+   "fieldname": "col_amounts",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_cdf",
+   "fieldtype": "Currency",
+   "label": "Total Payable (CDF)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ht_cdf",
+   "fieldtype": "Currency",
+   "label": "Total HT (CDF)"
+  },
+  {
+   "fieldname": "vat_cdf",
+   "fieldtype": "Currency",
+   "label": "Total VAT (CDF)"
+  },
+  {
+   "fieldname": "total_ttc_display",
+   "fieldtype": "Currency",
+   "label": "Total TTC (Display)"
+  },
+  {
+   "fieldname": "payment_code",
+   "fieldtype": "Select",
+   "label": "Payment Code",
+   "options": "ESPECES\nVIREMENT\nCARTEBANCAIRE\nMOBILEMONEY\nCHEQUES\nCREDIT\nAUTRE",
+   "default": "ESPECES",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sec_items",
+   "fieldtype": "Section Break",
+   "label": "Line Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "DRC Fiscal Invoice Item"
+  },
+  {
+   "fieldname": "sec_gateway",
+   "fieldtype": "Section Break",
+   "label": "Gateway Synchronization"
+  },
+  {
+   "fieldname": "drcfact_invoice_id",
+   "fieldtype": "Int",
+   "label": "DRC FACT+ Invoice ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "drcfact_number",
+   "fieldtype": "Data",
+   "label": "DRC FACT+ Number",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "external_ref",
+   "fieldtype": "Data",
+   "label": "External Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "idempotent_replay",
+   "fieldtype": "Check",
+   "label": "Idempotent Replay",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_gateway",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "copy_count",
+   "fieldtype": "Int",
+   "label": "Printed Copies Count",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_printed_at",
+   "fieldtype": "Datetime",
+   "label": "Last Printed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_dgi",
+   "fieldtype": "Section Break",
+   "label": "DGI Security Elements"
+  },
+  {
+   "fieldname": "dgi_code_def",
+   "fieldtype": "Data",
+   "label": "CODE DEF / DGI",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dgi_nim",
+   "fieldtype": "Data",
+   "label": "NIM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dgi_counters",
+   "fieldtype": "Data",
+   "label": "DGI Counters",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dgi_datetime",
+   "fieldtype": "Data",
+   "label": "DGI Date & Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dgi_environment",
+   "fieldtype": "Data",
+   "label": "DGI Environment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_dgi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dgi_uid",
+   "fieldtype": "Data",
+   "label": "DGI UID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dgi_qr_code",
+   "fieldtype": "Small Text",
+   "label": "DGI QR String",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dgi_qr_image",
+   "fieldtype": "Long Text",
+   "label": "QR Base64 PNG",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_fa",
+   "fieldtype": "Section Break",
+   "label": "Credit Note Reference (FA Only)"
+  },
+  {
+   "fieldname": "reference_type",
+   "fieldtype": "Select",
+   "label": "Reference Type",
+   "options": "\nCOR\nRAN\nRAM\nRRR"
+  },
+  {
+   "fieldname": "reference_code_def",
+   "fieldtype": "Data",
+   "label": "Original Invoice DEF Code"
+  },
+  {
+   "fieldname": "source_drc_invoice_id",
+   "fieldtype": "Int",
+   "label": "Original DRC FACT+ ID"
+  },
+  {
+   "fieldname": "credit_note_reason",
+   "fieldtype": "Small Text",
+   "label": "Credit Note Reason"
+  },
+  {
+   "fieldname": "sec_error",
+   "fieldtype": "Section Break",
+   "label": "Error Trace"
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Small Text",
+   "label": "Last Error Message",
+   "read_only": 1
+  },
+  {
+   "fieldname": "error_detail",
+   "fieldtype": "Code",
+   "label": "Error Detail",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 0,
+ "istable": 0,
+ "issingle": 0,
+ "module": "NextFact",
+ "name": "DRC Fiscal Invoice",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  }
+ ],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

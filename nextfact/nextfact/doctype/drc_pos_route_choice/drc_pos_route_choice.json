@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "mapping"
+ ],
+ "fields": [
+  {
+   "fieldname": "mapping",
+   "fieldtype": "Link",
+   "label": "DRC POS Mapping",
+   "options": "DRC POS Mapping",
+   "reqd": 1,
+   "in_list_view": 1
+  }
+ ],
+ "is_submittable": 0,
+ "istable": 1,
+ "issingle": 0,
+ "module": "NextFact",
+ "name": "DRC Pos Route Choice",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

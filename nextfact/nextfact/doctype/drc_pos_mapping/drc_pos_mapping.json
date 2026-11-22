@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "enabled",
+  "environment",
+  "api_key",
+  "col_1",
+  "company",
+  "company_nif",
+  "emcf_nid",
+  "receipt_point_name",
+  "receipt_paper",
+  "sec_conn",
+  "is_default_for_desk",
+  "max_parallel_requests",
+  "connection_status",
+  "last_connection_test",
+  "sec_profiles",
+  "pos_profiles"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Point of Sale Title",
+   "unique": 1,
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "0",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "environment",
+   "fieldtype": "Select",
+   "label": "Environment",
+   "options": "test\nproduction",
+   "default": "test",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "API Key (dfp_...)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company_nif",
+   "fieldtype": "Data",
+   "label": "Taxpayer NIF",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "emcf_nid",
+   "fieldtype": "Data",
+   "label": "e-MCF NID",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "receipt_point_name",
+   "fieldtype": "Data",
+   "label": "Receipt Point of Sale Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "receipt_paper",
+   "fieldtype": "Select",
+   "label": "Printer Paper",
+   "options": "80mm\n58mm\nA4",
+   "default": "80mm"
+  },
+  {
+   "fieldname": "sec_conn",
+   "fieldtype": "Section Break",
+   "label": "Connection & Concurrency"
+  },
+  {
+   "fieldname": "is_default_for_desk",
+   "fieldtype": "Check",
+   "label": "Default for Desk (No POS Profile)"
+  },
+  {
+   "fieldname": "max_parallel_requests",
+   "fieldtype": "Int",
+   "label": "Max Parallel Requests per e-MCF",
+   "default": "1"
+  },
+  {
+   "fieldname": "connection_status",
+   "fieldtype": "Select",
+   "label": "Connection Status",
+   "options": "Unknown\nOK\nFailed",
+   "default": "Unknown",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "last_connection_test",
+   "fieldtype": "Datetime",
+   "label": "Last Connection Test",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_profiles",
+   "fieldtype": "Section Break",
+   "label": "Mapped POS Profiles"
+  },
+  {
+   "fieldname": "pos_profiles",
+   "fieldtype": "Table",
+   "label": "POS Profiles",
+   "options": "DRC POS Mapping Profile"
+  }
+ ],
+ "is_submittable": 0,
+ "istable": 0,
+ "issingle": 0,
+ "module": "NextFact",
+ "name": "DRC Pos Mapping",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  }
+ ],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "autoname": "field:title"
+}

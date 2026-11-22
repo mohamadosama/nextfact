@@ -1,0 +1,130 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "timestamp",
+  "drc_fiscal_invoice",
+  "pos_mapping",
+  "request_id",
+  "endpoint",
+  "http_method",
+  "http_status",
+  "duration_ms",
+  "direction",
+  "sec_payloads",
+  "request_headers",
+  "request_body",
+  "response_body",
+  "error_trace"
+ ],
+ "fields": [
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "label": "Timestamp",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "drc_fiscal_invoice",
+   "fieldtype": "Link",
+   "label": "DRC Fiscal Invoice",
+   "options": "DRC Fiscal Invoice",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "pos_mapping",
+   "fieldtype": "Link",
+   "label": "DRC POS Mapping",
+   "options": "DRC POS Mapping",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "request_id",
+   "fieldtype": "Data",
+   "label": "Request ID",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "endpoint",
+   "fieldtype": "Data",
+   "label": "Endpoint",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "http_method",
+   "fieldtype": "Select",
+   "label": "Method",
+   "options": "GET\nPOST",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "http_status",
+   "fieldtype": "Int",
+   "label": "HTTP Status",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "duration_ms",
+   "fieldtype": "Int",
+   "label": "Duration (ms)"
+  },
+  {
+   "fieldname": "direction",
+   "fieldtype": "Select",
+   "label": "Direction",
+   "options": "Outbound\nInbound",
+   "default": "Outbound"
+  },
+  {
+   "fieldname": "sec_payloads",
+   "fieldtype": "Section Break",
+   "label": "Request & Response"
+  },
+  {
+   "fieldname": "request_headers",
+   "fieldtype": "Code",
+   "label": "Masked Headers"
+  },
+  {
+   "fieldname": "request_body",
+   "fieldtype": "Code",
+   "label": "Request Body"
+  },
+  {
+   "fieldname": "response_body",
+   "fieldtype": "Code",
+   "label": "Response Body"
+  },
+  {
+   "fieldname": "error_trace",
+   "fieldtype": "Long Text",
+   "label": "Error Trace"
+  }
+ ],
+ "is_submittable": 0,
+ "istable": 0,
+ "issingle": 0,
+ "module": "NextFact",
+ "name": "DRC Fact Log",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  }
+ ],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "autoname": "autoincrement"
+}

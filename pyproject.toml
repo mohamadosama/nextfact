@@ -1,0 +1,20 @@
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "nextfact"
+authors = [
+    { name = "Mohamad Osama", email = "mohamad.osama@outlook.com"}
+]
+description = "DRC FACT+ E-Invoicing Integration for ERPNext (DRC DGI)"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    "qrcode[pil]>=7.4.2",
+    "requests>=2.28.0"
+]
+
+[tool.bench]
+creator = "Mohamad Osama"
