@@ -22,7 +22,7 @@
  "istable": 1,
  "issingle": 0,
  "module": "NextFact",
- "name": "DRC Pos Route Choice",
+ "name": "DRC POS Route Choice",
  "permissions": [],
  "quick_entry": 0,
  "sort_field": "modified",

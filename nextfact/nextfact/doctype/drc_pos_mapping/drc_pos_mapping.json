@@ -140,7 +140,7 @@
  "istable": 0,
  "issingle": 0,
  "module": "NextFact",
- "name": "DRC Pos Mapping",
+ "name": "DRC POS Mapping",
  "permissions": [
   {
    "role": "System Manager",

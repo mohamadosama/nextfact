@@ -114,7 +114,7 @@
  "istable": 0,
  "issingle": 0,
  "module": "NextFact",
- "name": "DRC Pos Route",
+ "name": "DRC POS Route",
  "permissions": [
   {
    "role": "System Manager",

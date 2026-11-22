@@ -22,7 +22,7 @@
  "istable": 1,
  "issingle": 0,
  "module": "NextFact",
- "name": "DRC Pos Mapping Profile",
+ "name": "DRC POS Mapping Profile",
  "permissions": [],
  "quick_entry": 0,
  "sort_field": "modified",
