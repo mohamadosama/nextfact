@@ -52,7 +52,7 @@ def build_receipt_context(fiscal_doc, copy_no=1):
         "copy_no": copy_no
     }
 
-@frappe.whitelist(allow_guest=False)
+@frappe.whitelist(allow_guest=True)
 def receipt(sales_invoice):
     """HTML Print View for DRC Fiscal Receipt."""
     f_name = frappe.db.get_value("Sales Invoice", sales_invoice, "custom_drc_fiscal_invoice")
@@ -82,7 +82,7 @@ def receipt(sales_invoice):
     html = frappe.render_template("nextfact/print_format/drc_fiscal_receipt/drc_fiscal_receipt.html", ctx)
     return Response(html, mimetype="text/html")
 
-@frappe.whitelist(allow_guest=False)
+@frappe.whitelist(allow_guest=True)
 def delivery_note(sales_invoice):
     """HTML Print View for NextFact Delivery Note."""
     si = frappe.get_doc("Sales Invoice", sales_invoice)
