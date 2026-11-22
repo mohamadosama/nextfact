@@ -1,6 +1,7 @@
 import frappe
 from frappe import _
 from frappe.utils import now_datetime, flt
+from werkzeug.wrappers import Response
 from nextfact.api.v1.errors import api_endpoint, ProblemError
 from nextfact.api.format import fmt_money, nextfact_labels
 
@@ -79,9 +80,7 @@ def receipt(sales_invoice):
 
     ctx = build_receipt_context(doc, copy_no=doc.copy_count)
     html = frappe.render_template("nextfact/print_format/drc_fiscal_receipt/drc_fiscal_receipt.html", ctx)
-    frappe.response["type"] = "page"
-    frappe.response["page_name"] = "print.html"
-    return html
+    return Response(html, mimetype="text/html")
 
 @frappe.whitelist(allow_guest=False)
 def delivery_note(sales_invoice):
@@ -111,9 +110,7 @@ def delivery_note(sales_invoice):
         "show_prices": settings.delivery_note_show_prices
     }
     html = frappe.render_template("nextfact/print_format/nextfact_delivery_note/nextfact_delivery_note.html", ctx)
-    frappe.response["type"] = "page"
-    frappe.response["page_name"] = "print.html"
-    return html
+    return Response(html, mimetype="text/html")
 
 def ensure_print_formats():
     """Register or update standard print formats in database."""

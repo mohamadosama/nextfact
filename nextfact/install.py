@@ -70,6 +70,44 @@ ROLES = [
     {"role_name": "NextFact Admin", "desk_access": 1},
 ]
 
+def ensure_desktop_icon_and_workspace():
+    # 1. Desktop Icon
+    if not frappe.db.exists("Desktop Icon", "NextFact"):
+        icon = frappe.new_doc("Desktop Icon")
+        icon.name = "NextFact"
+        icon.label = "NextFact"
+        icon.icon_type = "Link"
+        icon.link_type = "Workspace Sidebar"
+        icon.link_to = "NextFact"
+        icon.icon = "receipt"
+        icon.standard = 1
+        icon.app = "nextfact"
+        icon.hidden = 0
+        icon.insert(ignore_permissions=True)
+    else:
+        frappe.db.set_value("Desktop Icon", "NextFact", "hidden", 0)
+
+    # 2. Workspace Sidebar
+    if not frappe.db.exists("Workspace Sidebar", "NextFact"):
+        sb = frappe.new_doc("Workspace Sidebar")
+        sb.name = "NextFact"
+        sb.title = "NextFact"
+        sb.app = "nextfact"
+        sb.header_icon = "receipt"
+        sb.standard = 1
+        items = [
+            {"label": "NextFact Overview", "link_to": "NextFact", "link_type": "Workspace", "icon": "receipt"},
+            {"label": "DRC Fiscal Invoice", "link_to": "DRC Fiscal Invoice", "link_type": "DocType", "icon": "file-text"},
+            {"label": "DRC Fact Settings", "link_to": "DRC Fact Settings", "link_type": "DocType", "icon": "settings"},
+            {"label": "DRC POS Mapping", "link_to": "DRC POS Mapping", "link_type": "DocType", "icon": "map-pin"},
+            {"label": "DRC Declared Turnover", "link_to": "DRC Declared Turnover", "link_type": "Report", "icon": "table"},
+            {"label": "DRC Fact Log", "link_to": "DRC Fact Log", "link_type": "DocType", "icon": "list"},
+            {"label": "DRC Print Log", "link_to": "DRC Print Log", "link_type": "DocType", "icon": "printer"},
+        ]
+        for it in items:
+            sb.append("items", it)
+        sb.insert(ignore_permissions=True)
+
 def after_install():
     # 1. Custom fields
     create_custom_fields(CUSTOM_FIELDS, update=True)
@@ -81,5 +119,8 @@ def after_install():
             role.role_name = r["role_name"]
             role.desk_access = r["desk_access"]
             role.insert(ignore_permissions=True)
+
+    # 3. Workspace and Desktop Icon
+    ensure_desktop_icon_and_workspace()
             
     frappe.db.commit()
