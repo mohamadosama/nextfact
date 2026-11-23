@@ -68,7 +68,8 @@ def report_sales_invoice(sales_invoice_name, explicit_mapping=None, idempotency_
         gw = DRCFactGateway(mapping)
 
         # Step 1: POST /invoices
-        if not fiscal.drcfact_invoice_id:
+        if not fiscal.drcfact_invoice_id or fiscal.status == "Failed":
+            fiscal.tax_group = settings.default_tax_group or "B"
             payload = build_payload(si.name, fiscal, mapping)
             try:
                 draft_resp = gw.create_draft(payload, drc_fiscal_invoice=fiscal.name)

@@ -91,7 +91,7 @@ img.qr {
 
     <div class="sep"></div>
 
-    <div>({{ doc.items|length }} {{ L.item if doc.items|length == 1 else L.items }})</div>
+    <div>({{ doc.items|length }} {{ L['item'] if doc.items|length == 1 else L['items'] }})</div>
     <div class="row"><span>{{ L.total_excl }} :</span><span>{{ fmt_money(doc.ht_cdf) }}</span></div>
     <div class="row"><span>{{ L.total_vat }} :</span><span>{{ fmt_money(doc.vat_cdf) }}</span></div>
 

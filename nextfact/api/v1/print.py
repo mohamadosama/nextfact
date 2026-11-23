@@ -57,9 +57,18 @@ def receipt(sales_invoice):
     """HTML Print View for DRC Fiscal Receipt."""
     f_name = frappe.db.get_value("Sales Invoice", sales_invoice, "custom_drc_fiscal_invoice")
     if not f_name:
-        frappe.throw(_("No fiscal invoice has been generated for {0}").format(sales_invoice))
+        frappe.throw(_("No fiscal invoice has been generated for {0}").format(sales_invoice), title=_("Fiscal Invoice Missing"))
 
     doc = frappe.get_doc("DRC Fiscal Invoice", f_name)
+    if doc.status not in ("Normalized", "Normalized (Test)"):
+        reason = doc.error_message or doc.error_detail or _("Invoice normalization has not succeeded.")
+        frappe.throw(
+            _("Cannot print official VAT receipt: Fiscal Invoice {0} is in status '{1}'. Reason: {2}").format(
+                doc.name, doc.status, reason
+            ),
+            title=_("Official VAT Receipt Refused")
+        )
+
     doc.copy_count = (doc.copy_count or 0) + 1
     doc.last_printed_at = now_datetime()
     doc.save(ignore_permissions=True)

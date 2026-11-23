@@ -104,10 +104,21 @@ def status(sales_invoices):
         raw_stat = (row.custom_drc_fiscal_status or "none").lower().replace(" ", "_")
         can_report = (row.docstatus == 1 and raw_stat in ("none", "failed", "draft"))
         can_print_delivery = (row.docstatus == 1)
+        fiscal_info = frappe.db.get_value(
+            "DRC Fiscal Invoice",
+            row.custom_drc_fiscal_invoice,
+            ["status", "error_message", "error_detail", "dgi_code_def"],
+            as_dict=True
+        ) if row.custom_drc_fiscal_invoice else None
+
         res.append({
             "sales_invoice": name,
             "status": raw_stat,
             "fiscal_invoice": row.custom_drc_fiscal_invoice,
+            "fiscal_status": fiscal_info.status if fiscal_info else None,
+            "dgi_code_def": fiscal_info.dgi_code_def if fiscal_info else None,
+            "error_message": fiscal_info.error_message if fiscal_info else None,
+            "error_detail": fiscal_info.error_detail if fiscal_info else None,
             "can_report": can_report,
             "can_print_delivery": can_print_delivery
         })

@@ -110,17 +110,17 @@ def build_payload(sales_invoice_name, drc_fiscal_invoice, mapping=None):
             "name": (item.item_name or item.item_code or "Item")[:100],
             "type": item_type,
             "quantity": flt(item.qty, 3),
-            "price": unit_price,
+            "price": max(0.0, unit_price),
             "tax_group": line_tax_group,
             "discount_type": discount_type,
-            "discount_value": flt(discount_value, 2),
+            "discount_value": max(0.0, min(100.0, flt(discount_value, 2))),
         })
 
     if not lines:
         raise ProblemError("gateway-validation", 422, _("Sales Invoice contains no line items."))
 
     payload = {
-        "external_ref": drc_fiscal_invoice.name,
+        "external_ref": str(drc_fiscal_invoice.name or si.name)[:120],
         "type": drc_fiscal_invoice.invoice_type or "FV",
         "client_id": client_id,
         "mode": drc_fiscal_invoice.price_mode or settings.default_price_mode or "ttc",

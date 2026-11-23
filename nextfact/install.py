@@ -72,28 +72,26 @@ ROLES = [
 
 def ensure_desktop_icon_and_workspace():
     # 1. Desktop Icon
+    icon_vals = {
+        "label": "NextFact",
+        "icon_type": "App",
+        "link_type": "External",
+        "link": "/desk/nextfact",
+        "icon": "receipt",
+        "logo_url": "/assets/nextfact/images/nextfact-logo.svg",
+        "bg_color": "blue",
+        "standard": 1,
+        "app": "nextfact",
+        "hidden": 0,
+        "parent_icon": None
+    }
     if not frappe.db.exists("Desktop Icon", "NextFact"):
         icon = frappe.new_doc("Desktop Icon")
         icon.name = "NextFact"
-        icon.label = "NextFact"
-        icon.icon_type = "Link"
-        icon.link_type = "Workspace Sidebar"
-        icon.link_to = "NextFact"
-        icon.icon = "receipt"
-        icon.logo_url = "/assets/nextfact/images/nextfact-logo.svg"
-        icon.bg_color = "blue"
-        icon.standard = 1
-        icon.app = "nextfact"
-        icon.hidden = 0
-        icon.parent_icon = None
+        icon.update(icon_vals)
         icon.insert(ignore_permissions=True)
     else:
-        frappe.db.set_value("Desktop Icon", "NextFact", {
-            "hidden": 0,
-            "parent_icon": None,
-            "logo_url": "/assets/nextfact/images/nextfact-logo.svg",
-            "bg_color": "blue"
-        })
+        frappe.db.set_value("Desktop Icon", "NextFact", icon_vals)
 
     # 2. Workspace Sidebar
     if not frappe.db.exists("Workspace Sidebar", "NextFact"):
@@ -109,12 +107,25 @@ def ensure_desktop_icon_and_workspace():
             {"label": "DRC Fact Settings", "link_to": "DRC Fact Settings", "link_type": "DocType", "icon": "settings"},
             {"label": "DRC POS Mapping", "link_to": "DRC POS Mapping", "link_type": "DocType", "icon": "map-pin"},
             {"label": "DRC Declared Turnover", "link_to": "DRC Declared Turnover", "link_type": "Report", "icon": "table"},
+            {"label": "DRC Fiscal Reconciliation", "link_to": "DRC Fiscal Reconciliation", "link_type": "Report", "icon": "table"},
             {"label": "DRC Fact Log", "link_to": "DRC Fact Log", "link_type": "DocType", "icon": "list"},
             {"label": "DRC Print Log", "link_to": "DRC Print Log", "link_type": "DocType", "icon": "printer"},
         ]
         for it in items:
             sb.append("items", it)
         sb.insert(ignore_permissions=True)
+
+    # 3. Synchronize existing Desktop Layout records
+    import json
+    for user_row in frappe.get_all("Desktop Layout", fields=["name", "user", "layout"]):
+        if user_row.layout:
+            try:
+                layout = json.loads(user_row.layout)
+                if isinstance(layout, list) and not any(i.get("label") == "NextFact" for i in layout):
+                    layout.append(icon_vals)
+                    frappe.db.set_value("Desktop Layout", user_row.name, "layout", json.dumps(layout))
+            except Exception:
+                pass
 
 def after_install():
     # 1. Custom fields
