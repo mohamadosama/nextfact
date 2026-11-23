@@ -6,6 +6,22 @@ app_email = "mohamad.osama@outlook.com"
 app_license = "MIT"
 required_apps = ["frappe", "erpnext"]
 
+app_logo_url = "/assets/nextfact/images/nextfact-logo.svg"
+app_home = "/desk/nextfact"
+
+add_to_apps_screen = [
+    {
+        "name": "nextfact",
+        "logo": "/assets/nextfact/images/nextfact-logo.svg",
+        "title": "NextFact",
+        "route": "/desk/nextfact",
+    }
+]
+
+app_include_js = [
+    "/assets/nextfact/js/nextfact_desk.js"
+]
+
 after_install = "nextfact.install.after_install"
 
 after_migrate = [

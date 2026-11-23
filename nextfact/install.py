@@ -80,12 +80,20 @@ def ensure_desktop_icon_and_workspace():
         icon.link_type = "Workspace Sidebar"
         icon.link_to = "NextFact"
         icon.icon = "receipt"
+        icon.logo_url = "/assets/nextfact/images/nextfact-logo.svg"
+        icon.bg_color = "blue"
         icon.standard = 1
         icon.app = "nextfact"
         icon.hidden = 0
+        icon.parent_icon = None
         icon.insert(ignore_permissions=True)
     else:
-        frappe.db.set_value("Desktop Icon", "NextFact", "hidden", 0)
+        frappe.db.set_value("Desktop Icon", "NextFact", {
+            "hidden": 0,
+            "parent_icon": None,
+            "logo_url": "/assets/nextfact/images/nextfact-logo.svg",
+            "bg_color": "blue"
+        })
 
     # 2. Workspace Sidebar
     if not frappe.db.exists("Workspace Sidebar", "NextFact"):
