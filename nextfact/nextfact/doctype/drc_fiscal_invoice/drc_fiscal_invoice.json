@@ -46,6 +46,7 @@
   "idempotent_replay",
   "col_gateway",
   "copy_count",
+  "retry_count",
   "last_printed_at",
   "sec_dgi",
   "dgi_code_def",
@@ -303,6 +304,13 @@
    "fieldname": "copy_count",
    "fieldtype": "Int",
    "label": "Printed Copies Count",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "retry_count",
+   "fieldtype": "Int",
+   "label": "Retry Count",
    "default": "0",
    "read_only": 1
   },

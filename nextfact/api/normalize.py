@@ -69,6 +69,9 @@ def report_sales_invoice(sales_invoice_name, explicit_mapping=None, idempotency_
 
         # Step 1: POST /invoices
         if not fiscal.drcfact_invoice_id or fiscal.status == "Failed":
+            if fiscal.status == "Failed":
+                fiscal.retry_count = (fiscal.retry_count or 0) + 1
+                fiscal.drcfact_invoice_id = None
             fiscal.tax_group = settings.default_tax_group or "B"
             payload = build_payload(si.name, fiscal, mapping)
             try:

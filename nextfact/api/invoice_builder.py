@@ -119,8 +119,12 @@ def build_payload(sales_invoice_name, drc_fiscal_invoice, mapping=None):
     if not lines:
         raise ProblemError("gateway-validation", 422, _("Sales Invoice contains no line items."))
 
+    ext_ref = str(drc_fiscal_invoice.name or si.name)
+    if drc_fiscal_invoice.get("retry_count"):
+        ext_ref = f"{ext_ref}-R{drc_fiscal_invoice.retry_count}"
+
     payload = {
-        "external_ref": str(drc_fiscal_invoice.name or si.name)[:120],
+        "external_ref": ext_ref[:120],
         "type": drc_fiscal_invoice.invoice_type or "FV",
         "client_id": client_id,
         "mode": drc_fiscal_invoice.price_mode or settings.default_price_mode or "ttc",
