@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"hdr_sc\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>DRC FACT+ Shortcuts</b></span>\",\"col\":12}},{\"id\":\"sc_pos\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Start POS\",\"col\":3}},{\"id\":\"sc_si\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Invoice\",\"col\":3}},{\"id\":\"sc_fi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DRC Fiscal Invoice\",\"col\":3}},{\"id\":\"sc_st\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DRC Fact Settings\",\"col\":3}},{\"id\":\"sc_mp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DRC POS Mapping\",\"col\":3}},{\"id\":\"sc_it\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item\",\"col\":3}},{\"id\":\"sc_cs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer\",\"col\":3}},{\"id\":\"sc_rep\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Declared Turnover Report\",\"col\":3}},{\"id\":\"spc_1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr_cards\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Fiscal Operations & Configuration</b></span>\",\"col\":12}},{\"id\":\"card_inv\",\"type\":\"card\",\"data\":{\"card_name\":\"Invoicing & Fiscalization\",\"col\":4}},{\"id\":\"card_cfg\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration & POS Mappings\",\"col\":4}},{\"id\":\"card_rep\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports & Audit Logs\",\"col\":4}}]",
+ "content": "[{\"id\":\"hdr_sc\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>DRC FACT+ Shortcuts</b></span>\",\"col\":12}},{\"id\":\"sc_wiz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Setup Wizard\",\"col\":3}},{\"id\":\"sc_pos\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Start POS\",\"col\":3}},{\"id\":\"sc_si\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Invoice\",\"col\":3}},{\"id\":\"sc_fi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DRC Fiscal Invoice\",\"col\":3}},{\"id\":\"sc_st\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DRC Fact Settings\",\"col\":3}},{\"id\":\"sc_mp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DRC POS Mapping\",\"col\":3}},{\"id\":\"sc_it\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item\",\"col\":3}},{\"id\":\"sc_cs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer\",\"col\":3}},{\"id\":\"sc_rep\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Declared Turnover Report\",\"col\":3}},{\"id\":\"spc_1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr_cards\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Fiscal Operations & Configuration</b></span>\",\"col\":12}},{\"id\":\"card_inv\",\"type\":\"card\",\"data\":{\"card_name\":\"Invoicing & Fiscalization\",\"col\":4}},{\"id\":\"card_cfg\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration & POS Mappings\",\"col\":4}},{\"id\":\"card_rep\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports & Audit Logs\",\"col\":4}}]",
  "creation": "2026-11-23 00:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -65,10 +65,20 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Configuration & POS Mappings",
-   "link_count": 4,
+   "link_count": 5,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup Wizard (Onboarding)",
+   "link_count": 0,
+   "link_to": "nextfact-setup-wizard",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
   },
   {
    "hidden": 0,
@@ -148,9 +158,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "DRC Setup Session",
+   "link_count": 0,
+   "link_to": "DRC Setup Session",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-11-23 00:00:00.000000",
+ "modified": "2026-11-25 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "NextFact",
  "name": "NextFact",
@@ -161,6 +181,13 @@
  "roles": [],
  "sequence_id": 1.0,
  "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "",
+   "label": "Setup Wizard",
+   "link_to": "nextfact-setup-wizard",
+   "type": "Page"
+  },
   {
    "color": "Grey",
    "doc_view": "",

@@ -94,6 +94,18 @@ def ensure_desktop_icon_and_workspace():
         frappe.db.set_value("Desktop Icon", "NextFact", icon_vals)
 
     # 2. Workspace Sidebar
+    sidebar_items = [
+        {"label": "NextFact Overview", "link_to": "NextFact", "link_type": "Workspace", "icon": "receipt"},
+        {"label": "Setup Wizard", "link_to": "nextfact-setup-wizard", "link_type": "Page", "icon": "compass"},
+        {"label": "DRC Setup Session", "link_to": "DRC Setup Session", "link_type": "DocType", "icon": "list"},
+        {"label": "DRC Fiscal Invoice", "link_to": "DRC Fiscal Invoice", "link_type": "DocType", "icon": "file-text"},
+        {"label": "DRC Fact Settings", "link_to": "DRC Fact Settings", "link_type": "DocType", "icon": "settings"},
+        {"label": "DRC POS Mapping", "link_to": "DRC POS Mapping", "link_type": "DocType", "icon": "map-pin"},
+        {"label": "DRC Declared Turnover", "link_to": "DRC Declared Turnover", "link_type": "Report", "icon": "table"},
+        {"label": "DRC Fiscal Reconciliation", "link_to": "DRC Fiscal Reconciliation", "link_type": "Report", "icon": "table"},
+        {"label": "DRC Fact Log", "link_to": "DRC Fact Log", "link_type": "DocType", "icon": "list"},
+        {"label": "DRC Print Log", "link_to": "DRC Print Log", "link_type": "DocType", "icon": "printer"},
+    ]
     if not frappe.db.exists("Workspace Sidebar", "NextFact"):
         sb = frappe.new_doc("Workspace Sidebar")
         sb.name = "NextFact"
@@ -101,19 +113,17 @@ def ensure_desktop_icon_and_workspace():
         sb.app = "nextfact"
         sb.header_icon = "receipt"
         sb.standard = 1
-        items = [
-            {"label": "NextFact Overview", "link_to": "NextFact", "link_type": "Workspace", "icon": "receipt"},
-            {"label": "DRC Fiscal Invoice", "link_to": "DRC Fiscal Invoice", "link_type": "DocType", "icon": "file-text"},
-            {"label": "DRC Fact Settings", "link_to": "DRC Fact Settings", "link_type": "DocType", "icon": "settings"},
-            {"label": "DRC POS Mapping", "link_to": "DRC POS Mapping", "link_type": "DocType", "icon": "map-pin"},
-            {"label": "DRC Declared Turnover", "link_to": "DRC Declared Turnover", "link_type": "Report", "icon": "table"},
-            {"label": "DRC Fiscal Reconciliation", "link_to": "DRC Fiscal Reconciliation", "link_type": "Report", "icon": "table"},
-            {"label": "DRC Fact Log", "link_to": "DRC Fact Log", "link_type": "DocType", "icon": "list"},
-            {"label": "DRC Print Log", "link_to": "DRC Print Log", "link_type": "DocType", "icon": "printer"},
-        ]
-        for it in items:
+        for it in sidebar_items:
             sb.append("items", it)
         sb.insert(ignore_permissions=True)
+    else:
+        sb = frappe.get_doc("Workspace Sidebar", "NextFact")
+        existing_links = {it.link_to for it in (sb.items or [])}
+        if "nextfact-setup-wizard" not in existing_links:
+            sb.set("items", [])
+            for it in sidebar_items:
+                sb.append("items", it)
+            sb.save(ignore_permissions=True)
 
     # 3. Synchronize existing Desktop Layout records
     import json

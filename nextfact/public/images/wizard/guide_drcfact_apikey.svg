@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .card { fill: #1e293b; stroke: #334155; stroke-width: 1.5; rx: 10; }
+      .header { fill: #0b1220; }
+      .title { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 700; fill: #f8fafc; }
+      .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .label { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; fill: #cbd5e1; }
+      .mono { font-family: monospace; font-size: 13px; font-weight: 700; fill: #38bdf8; }
+      .pill-green { fill: #064e3b; stroke: #10b981; stroke-width: 1.5; rx: 6; }
+      .pill-text-green { font-family: system-ui, sans-serif; font-size: 11px; font-weight: 700; fill: #6ee7b7; }
+      .callout { fill: #172554; stroke: #3b82f6; stroke-width: 1.8; rx: 8; }
+      .callout-warn { fill: #451a03; stroke: #f59e0b; stroke-width: 1.8; rx: 8; }
+      .arrow { stroke: #f59e0b; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .badge { fill: #2563eb; }
+      .badge-text { font-family: system-ui, sans-serif; font-size: 12px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f59e0b" />
+    </marker>
+  </defs>
+
+  <rect width="760" height="400" class="bg" rx="12"/>
+  <rect x="0" y="0" width="760" height="50" class="header" rx="12"/>
+  <text x="24" y="31" class="title">DRC FACT+ Control Panel — API Key &amp; Environment Guide</text>
+  <rect x="570" y="13" width="166" height="24" class="pill-green"/>
+  <text x="653" y="29" class="pill-text-green" text-anchor="middle">app.drcfactplus.com</text>
+
+  <!-- Step 1: POS Selector -->
+  <rect x="24" y="70" width="330" height="105" class="card"/>
+  <circle cx="44" cy="92" r="12" class="badge"/><text x="44" y="96" class="badge-text">1</text>
+  <text x="66" y="96" class="label">Select Point of Sale (Shop) in DRC FACT</text>
+  <rect x="40" y="110" width="298" height="32" fill="#0f172a" stroke="#475569" rx="6"/>
+  <text x="52" y="131" class="mono">LA VISION GOMBE  /  LA VISION NSELE</text>
+  <text x="40" y="160" class="subtitle">Verify NIF &amp; PDV name displayed below selector</text>
+
+  <!-- Step 2: Mise en service fiscale -->
+  <rect x="24" y="192" width="330" height="184" class="card"/>
+  <circle cx="44" cy="214" r="12" class="badge"/><text x="44" y="218" class="badge-text">2</text>
+  <text x="66" y="218" class="label">Paramètres → Mise en service fiscale</text>
+  <rect x="40" y="232" width="298" height="28" fill="#0f172a" stroke="#10b981" rx="5"/>
+  <text x="52" y="250" class="pill-text-green">✓ Jeton DGI: Stored inside DRC FACT+</text>
+  <rect x="40" y="268" width="298" height="28" fill="#0f172a" stroke="#10b981" rx="5"/>
+  <text x="52" y="286" class="pill-text-green">✓ Environnement: Sandbox (test) OR Production</text>
+  <rect x="40" y="304" width="298" height="28" fill="#0f172a" stroke="#10b981" rx="5"/>
+  <text x="52" y="322" class="pill-text-green">✓ Mode: e-MCF (API Internet)</text>
+  <text x="40" y="356" class="subtitle">Govt e-DEF JWT lives in DRC FACT+, NOT ERPNext</text>
+
+  <!-- Step 3: API Key Box -->
+  <rect x="395" y="70" width="341" height="145" class="callout"/>
+  <circle cx="417" cy="94" r="12" class="badge"/><text x="417" y="98" class="badge-text">3</text>
+  <text x="438" y="98" class="title" style="font-size:14px;">Copy Integration API Key (dfp_...)</text>
+  <text x="415" y="122" class="subtitle">From DRC FACT+ / Admin Integrations API panel:</text>
+  <rect x="415" y="135" width="301" height="36" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" rx="6"/>
+  <text x="428" y="158" class="mono">dfp_live_9a8f... (or dfp_test_...)</text>
+  <text x="415" y="195" class="subtitle">Paste this key into NextFact Step 2 → "API Key"</text>
+
+  <!-- Step 4: Warning Sandbox vs Production -->
+  <rect x="395" y="232" width="341" height="144" class="callout-warn"/>
+  <circle cx="417" cy="256" r="12" fill="#d97706"/><text x="417" y="260" class="badge-text">!</text>
+  <text x="438" y="260" class="title" style="font-size:14px; fill:#fde68a;">Sandbox vs Production Safety</text>
+  <text x="415" y="285" class="label" style="fill:#fef3c7;">• Sandbox key → Environment = "test"</text>
+  <text x="415" y="306" class="subtitle" style="fill:#fde68a;">  Prints "TEST - NOT A FISCAL DOCUMENT".</text>
+  <text x="415" y="330" class="label" style="fill:#fef3c7;">• Production key → Environment = "production"</text>
+  <text x="415" y="351" class="subtitle" style="fill:#fde68a;">  Issues REAL legal DGI DEF tax invoices!</text>
+
+  <!-- Connecting arrow -->
+  <path d="M 354 126 L 390 126" class="arrow"/>
+</svg>

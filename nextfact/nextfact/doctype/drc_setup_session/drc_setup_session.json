@@ -1,0 +1,179 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "NF-SETUP-.YYYY.-.#####",
+ "creation": "2026-11-25 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "target_environment",
+  "current_step",
+  "col_meta",
+  "started_by",
+  "started_at",
+  "completed_by",
+  "completed_at",
+  "duration_seconds",
+  "sec_reset",
+  "reset_by",
+  "reset_at",
+  "col_reset",
+  "reset_reason",
+  "sec_state",
+  "completed_steps_json",
+  "touched_mappings",
+  "sec_log",
+  "activity_log"
+ ],
+ "fields": [
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "In Progress\nCompleted\nReset / Archived",
+   "default": "In Progress",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "target_environment",
+   "fieldtype": "Select",
+   "label": "Target Environment",
+   "options": "test\nproduction",
+   "default": "test",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "current_step",
+   "fieldtype": "Int",
+   "label": "Current Step",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "started_by",
+   "fieldtype": "Link",
+   "label": "Started By",
+   "options": "User",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_by",
+   "fieldtype": "Link",
+   "label": "Completed By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "duration_seconds",
+   "fieldtype": "Int",
+   "label": "Duration (Seconds)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_reset",
+   "fieldtype": "Section Break",
+   "label": "Reset / Archive Audit",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "reset_by",
+   "fieldtype": "Link",
+   "label": "Reset By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reset_at",
+   "fieldtype": "Datetime",
+   "label": "Reset At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_reset",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reset_reason",
+   "fieldtype": "Small Text",
+   "label": "Reset Reason",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_state",
+   "fieldtype": "Section Break",
+   "label": "Session State",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "completed_steps_json",
+   "fieldtype": "Small Text",
+   "label": "Completed Steps JSON",
+   "default": "[]",
+   "read_only": 1
+  },
+  {
+   "fieldname": "touched_mappings",
+   "fieldtype": "Small Text",
+   "label": "Touched POS Mappings",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_log",
+   "fieldtype": "Section Break",
+   "label": "Step-by-Step Audit Log"
+  },
+  {
+   "fieldname": "activity_log",
+   "fieldtype": "Table",
+   "label": "Activity Log",
+   "options": "DRC Setup Session Log",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 0,
+ "istable": 0,
+ "issingle": 0,
+ "module": "NextFact",
+ "name": "DRC Setup Session",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "NextFact Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0
+  }
+ ],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

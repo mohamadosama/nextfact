@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 8; }
+      .branch { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.8; rx: 10; }
+      .dgi { fill: #ecfdf5; stroke: #10b981; stroke-width: 1.8; rx: 10; }
+      .t { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #0f172a; }
+      .s { font-family: system-ui, sans-serif; font-size: 11px; fill: #475569; }
+      .m { font-family: monospace; font-size: 11px; font-weight: 700; fill: #1d4ed8; }
+      .line { stroke: #64748b; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+  <rect width="760" height="340" class="bg" rx="12"/>
+  <text x="24" y="32" class="t" style="font-size:15px;">Multi-Branch &amp; Multi-Terminal POS Routing (Zero Error 63 Collisions)</text>
+  <text x="24" y="50" class="s">Multiple cash registers in the same branch share one DRC POS Mapping safely via per-NID advisory locking.</text>
+
+  <!-- Branch 1 -->
+  <rect x="24" y="72" width="210" height="115" class="box"/>
+  <text x="40" y="96" class="t">Branch 1: GOMBE</text>
+  <rect x="40" y="108" width="178" height="28" fill="#f1f5f9" rx="5"/><text x="50" y="126" class="s" style="font-weight:700;">POS Profile: Gombe POS 1</text>
+  <rect x="40" y="144" width="178" height="28" fill="#f1f5f9" rx="5"/><text x="50" y="162" class="s" style="font-weight:700;">POS Profile: Gombe POS 2</text>
+
+  <!-- Branch 2 -->
+  <rect x="24" y="205" width="210" height="115" class="box"/>
+  <text x="40" y="229" class="t">Branch 2: NSELE</text>
+  <rect x="40" y="241" width="178" height="28" fill="#f1f5f9" rx="5"/><text x="50" y="259" class="s" style="font-weight:700;">POS Profile: Nsele POS 1</text>
+  <rect x="40" y="277" width="178" height="28" fill="#f1f5f9" rx="5"/><text x="50" y="295" class="s" style="font-weight:700;">POS Profile: Nsele POS 2</text>
+
+  <!-- Mappings -->
+  <rect x="285" y="84" width="220" height="90" class="branch"/>
+  <text x="300" y="108" class="t">DRC POS Mapping: GOMBE</text>
+  <text x="300" y="128" class="m">e-MCF NID: CD01003343-1</text>
+  <text x="300" y="146" class="s">Advisory Lock Mutex (max 1 parallel)</text>
+  <text x="300" y="162" class="s">PDV: LA VISION GOMBE</text>
+
+  <rect x="285" y="217" width="220" height="90" class="branch"/>
+  <text x="300" y="241" class="t">DRC POS Mapping: NSELE</text>
+  <text x="300" y="261" class="m">e-MCF NID: CD01003341-1</text>
+  <text x="300" y="279" class="s">Advisory Lock Mutex (max 1 parallel)</text>
+  <text x="300" y="295" class="s">PDV: LA VISION NSELE</text>
+
+  <!-- Gateway -->
+  <rect x="555" y="130" width="180" height="130" class="dgi"/>
+  <text x="645" y="165" class="t" text-anchor="middle">DRC FACT+ &amp; DGI</text>
+  <text x="645" y="188" class="s" text-anchor="middle">Returns Official:</text>
+  <text x="645" y="208" class="m" style="fill:#047857;" text-anchor="middle">CODE DEF</text>
+  <text x="645" y="226" class="m" style="fill:#047857;" text-anchor="middle">Counters / NIM</text>
+  <text x="645" y="244" class="m" style="fill:#047857;" text-anchor="middle">34mm QR Code</text>
+
+  <path d="M 234 122 L 285 122 M 234 158 L 285 142" class="line"/>
+  <path d="M 234 255 L 285 255 M 234 291 L 285 275" class="line"/>
+  <path d="M 505 130 L 555 175 M 505 262 L 555 215" class="line"/>
+</svg>

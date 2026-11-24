@@ -1,0 +1,27 @@
+{
+ "content": null,
+ "creation": "2026-11-25 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "icon": "compass",
+ "idx": 0,
+ "modified": "2026-11-25 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NextFact",
+ "name": "nextfact-setup-wizard",
+ "owner": "Administrator",
+ "page_name": "nextfact-setup-wizard",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "NextFact Admin"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "NextFact Setup Wizard"
+}
